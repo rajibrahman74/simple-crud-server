@@ -1,0 +1,37 @@
+MongoDB --- Connections
+1. Create account
+2. Create an user with email and password
+3. Whitelist IP address
+4. Database > connect > driver > node > View all code >then copy the code
+5. Change the password in the copy code URI
+
+POST --- Operations
+1. app.post("/users", async (req, res) => { --- });
+2. Make the function async to use await inside it
+3. Make sure you use the express.json() middleware
+4. access data form the body: const user = req.body
+5. const result = await userCollection.insertOne(user)
+6. res.send(result)
+
+CLIENT for POST Operations
+1. Create fetch
+2. Add second parameter as an object
+3. Provide method: "POST"
+4. Add headers: {"content-type": "application/json"}
+5. Add body: JSON.stringifiy(user)
+
+
+READ Many --- Operations
+1. Create a cursor = userCollection.find();
+2. const result = await cursor.toArray()
+
+
+DELETE One --- Operations
+1. Create app.delete("/users", async (req, res) => { --- })
+2. Specify unique ObjectId to delete the right user
+3. const query = { _id: new ObjectId(id) };
+4. const result = await userCollection.deleteOne(query);
+
+CLIENT for DELETE Operations
+1. Create dynamic url with id
+2. Mention the delete method
